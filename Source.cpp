@@ -512,35 +512,36 @@ int main(){
 */
 
 /*Constructors
-    class Dog{
-    public:
-        Dog();
+    // class Dog{
+    // public:
+    //     Dog();
 
-        string Name;
-        int age;
-        float health;
+    //     string Name;
+    //     int age;
+    //     float health;
 
-        void Bark();
-    };
+    //     void Bark();
+    // };
     
-    int main(){
-        Dog dog;
-        cout << dog.Name << ", " << dog.age << ", " << dog.health << endl;
+    // int main(){
+    //     Dog dog;
+    //     cout << dog.Name << ", " << dog.age << ", " << dog.health << endl;
 
-        system("pause");
-    }
+    //     system("pause");
+    // }
 
-    Dog::Dog(){
-        Name = "default name";
-        age = 1;
-        health = 100.f;
+    // Dog::Dog(){
+    //     Name = "default name";
+    //     age = 1;
+    //     health = 100.f;
 
-        Bark();
-    }
+    //     Bark();
+    // }
 
-    void Dog::Bark(){
-        cout << "Woof!" << endl;
-    }
+    // void Dog::Bark(){
+    //     cout << "Woof!" << endl;
+    // }
+    
 
 
     struct Cat
@@ -585,4 +586,73 @@ int main(){
         system("pause");
     }
 */
+
+/*Inheritance
+    class Animal{
+    public:
+        Animal();
+        Animal(string nome, int idade, int pernas);
+
+        string Name;
+        int age;
+        int numberOfLimbs;
+
+        void Report();
+    };
+
+    class Dog : public Animal{
+    public:
+        Dog();
+        Dog(string nome, int idade, int pernas);
+
+        void Speak();
+    };
+    
+    int main(){
+        // Animal a1;
+        // a1.Report();
+
+        // Animal a2("Lessie", 2, 4);
+        // // a2.Report(); // Movido para o constructor
+
+        Dog d1("Luna", 9, 4);
+        d1.Speak();
+
+        system("pause");
+    }
+
+    Animal::Animal(){
+        cout << "An animal is born!" << endl;
+
+        Name = "DEFAULT";
+        age = 0;
+        numberOfLimbs = 0;
+    }
+
+    // Animal::Animal(string nome, int idade, int pernas){ // Forma antiga
+    //     Name = nome;
+    //     age = idade;
+    //     numberOfLimbs = pernas;
+    // }
+
+    Animal::Animal(string nome, int idade, int pernas) : Name(nome), age(idade), numberOfLimbs(pernas){
+        Report();
+    }
+
+    void Animal::Report(){
+        cout << "Name: " << Name << " | " << "Age: " << age << " | " << "Num of Limbs: " << numberOfLimbs << endl;
+    }
+
+    Dog::Dog(){
+        cout << "A Dog is born!" << endl;
+    }
+
+    Dog::Dog(string nome, int idade, int pernas){
+        Animal(nome, idade, pernas);
+    }
+
+    void Dog::Speak(){
+        cout << "Woof!" << endl;
+    }
+*/    
 
