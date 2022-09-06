@@ -1,4 +1,4 @@
-//Ctrl + Alt + N = run
+// Ctrl + Alt + N = run
 
 #include <iostream>
 #include <string>
@@ -62,9 +62,9 @@ using namespace std;
 
     int main(){
         welcome();
-        
+
         printNumber(5);
-        
+
         int sum;
         sum = add(4, 8); //calls function add with the following parameters
         printNumber(sum); //calls function printNumber and pass the sum parameter
@@ -74,22 +74,22 @@ using namespace std;
 */
 
 /*Functions (Continuing)
-    //to organizer functions, you can only declare on top of the code
-    //and create actual definition at the end. This is called Prototype Function.
+    // to organizer functions, you can only declare on top of the code
+    // and create actual definition at the end. This is called Prototype Function.
 
-    //only declares
+    // only declares
     void prototypeFunction();
     char getYesNo();
     void printAnswer(char answerToPrint);
     void askQuestion();
-    
+
     int main(){
         askQuestion(); //Refactored function
 
         system("pause");
     }
 
-    //has to have the same name
+    // has to have the same name
     void prototypeFunction(){
         cout << "The definition comes here" << endl;
     }
@@ -106,11 +106,11 @@ using namespace std;
         cout << "You typed: " << answerToPrint << endl;
     }
 
-    //Refactoring: abstract all funcions from main to another function
+    // Refactoring: abstract all funcions from main to another function
     void askQuestion(){
-        //calls function
+        // calls function
         prototypeFunction();
-        //created a variable to store the return result of the function
+        // created a variable to store the return result of the function
         char answer = getYesNo();
         printAnswer(answer);
     }
@@ -127,7 +127,7 @@ using namespace std;
     int main(){
         int i = 3;
         float j = 2.f;
-        
+
         int k = j / i;
 
         cout << k << endl;
@@ -146,7 +146,7 @@ using namespace std;
             myInt++;
             count++;
         }
-        
+
         system("pause");
     }
 */
@@ -155,17 +155,17 @@ using namespace std;
 int main(){
     double numberPi = 3.14159;
     double numberE = 2.718281828;
-    
+
     int count = 0;
 
     bool condition = true;
-    
+
     do{
         cout << "The number pi is: " << numberPi << endl;
         cout << "The numver e is: " << numberE << endl;
         cout << "Count: " << count << endl;
         cout << "pi + e * count = " << numberPi + numberE * count << endl;
-        
+
         count++;
         if(count <=10){
             condition = true;
@@ -173,7 +173,7 @@ int main(){
             condition = false;
         }
     } while (condition);
-    
+
 
     system("pause");
 }
@@ -193,7 +193,7 @@ int main(){
 /*References
     //Cria uma refenrencia a uma variavel para que possa ser
     //modificada por uma funcao fora do escopo dela, ou seja
-    //modificar a propria variavel passada pelo argumento de 
+    //modificar a propria variavel passada pelo argumento de
     //uma funcao sem criar uma variavel local e retornar ela
     //pois a referencia aponta para o mesmo locar de memoria
     //que esta o valor da variavel, modificando ela mesma.
@@ -265,7 +265,7 @@ int main(){
 /*And / Or
     //And: both need to be true
     //Or: just one need to be true
-    
+
     int main(){
         int i = 1;
         int j = 2;
@@ -287,7 +287,7 @@ int main(){
     }
 */
 
-/*Array 
+/*Array
     int main(){
         int myIntArray[10];
 
@@ -295,7 +295,7 @@ int main(){
         {
             myIntArray[i] = i;
         }
-        
+
         cout << "The first element of myIntArray is: " << myIntArray[0] << endl;
         cout << "The fifth element of myIntArray is: " << myIntArray[5] << endl;
 
@@ -363,7 +363,7 @@ int main(){
 
         //int value = 99;
         //SwitchOnInt(value);
-        
+
         system("pause");
     }
 
@@ -402,6 +402,9 @@ int main(){
 */
 
 /*Struct
+    // A way to group several related variables
+    // Each variable in the struct is know as a member of the struct
+
     struct LocationVector{
         float x, y, z;
     };
@@ -411,7 +414,7 @@ int main(){
         float health, stamina, damage;
 
         LocationVector location = {0.f, 0.f, 0.f};
-        
+
         int GetLevel(){
             if (level > 3){
                 cout << "Prestige levels! Your current level is: ";
@@ -431,7 +434,7 @@ int main(){
 
     int main(){
         Player p1 = {4, 100.f, 30.f, 80.f};
-        
+
         cout << "Player 1 level: " << p1.GetLevel() << endl;
         cout << "Player 1 takes " << p1.TakeDamage(30.f) << " damage. Current health: " << p1.health << endl;
         p1.DisplayLocation();
@@ -475,7 +478,7 @@ int main(){
         string Name;
         int x, y, z;
     };
-    
+
 
     int main(){
         PlayerLocation p1 = {"Helo", 8, 9, 21};
@@ -490,8 +493,6 @@ int main(){
 */
 
 /*Objects and Classes
-    
-    
     class Dog{
     public:
         string Name;
@@ -502,7 +503,7 @@ int main(){
             cout << "Woof!" << endl;
         }
     };
-    
+
     int main(){
         Dog Luna;
         Dog Lessie;
@@ -512,25 +513,28 @@ int main(){
 */
 
 /*Constructors
-    // class Dog{
+    // A constructor is a special method that is automatically called
+    // when a object of a class is created
+
+    // class Dog{ // Classe
     // public:
-    //     Dog();
+    //     Dog(); // Constructor
 
     //     string Name;
     //     int age;
     //     float health;
 
-    //     void Bark();
+    //     void Bark(); // Normal function inside Class Dog
     // };
-    
+
     // int main(){
-    //     Dog dog;
+    //     Dog dog; // Object of Class Dog (this will call the constructor)
     //     cout << dog.Name << ", " << dog.age << ", " << dog.health << endl;
 
     //     system("pause");
     // }
 
-    // Dog::Dog(){
+    // Dog::Dog(){ // Constructor definition
     //     Name = "default name";
     //     age = 1;
     //     health = 100.f;
@@ -538,27 +542,27 @@ int main(){
     //     Bark();
     // }
 
-    // void Dog::Bark(){
+    // void Dog::Bark(){ // Function definition; need the full classified name (::) because it is inside Class Dog
     //     cout << "Woof!" << endl;
     // }
-    
 
 
-    struct Cat
+
+    struct Cat // Collection of variables related to Cat
     {
-        Cat();
+        Cat(); // Constructor
 
         string Name;
-        void Meow(int health);
+        void Meow(int health); // Funcion inside struct Cat
     };
 
-    Cat::Cat(){
+    Cat::Cat(){ // Constructor definition
         cout << "You found a cat!" << endl;
         Name = "Miau";
         Meow(2);
     }
 
-    void Cat::Meow(int health){
+    void Cat::Meow(int health){ // Function definition
         cout << "My name is: " << Name << endl;
         switch (health)
         {
@@ -576,7 +580,7 @@ int main(){
             break;
         }
     }
-    
+
 
     int main(){
         Cat cat1;
@@ -588,71 +592,221 @@ int main(){
 */
 
 /*Inheritance
-    class Animal{
+class Pokemon{
+public:
+    string name, gender;
+    int health;
+
+    Pokemon(); // Constructor    
+
+    Pokemon(string nome, string sexo, int vida); // Constructor Overload
+    
+    void Report();
+};
+
+class WaterType : public Pokemon{ // WaterType is a derived/chield Class of Pokemon, it inherits everything from the parent Class
+public:
+    WaterType(); // Constructor
+
+    WaterType(string nome, string sexo, int vida); // Constructor Overload
+
+    void Speak();
+};
+
+class Squirtle : public WaterType{
+public:
+
+};
+
+int main(){
+    // Pokemon p1; // Calls the Constructor
+    // p1.Report();
+    // Pokemon p2("Squirtle", "Male", 85); // Calls the Constructor Overload
+
+    // WaterType w1("Squirtle", "Male", 85);
+    // w1.Speak();
+
+    Squirtle squirtle;
+    squirtle.Speak();
+    squirtle.Report();
+    
+    system("pause");
+}
+
+// Constructor definition
+Pokemon::Pokemon(){
+    cout << "A wild pokemon appears!" << endl;
+
+    // Some default values:
+    name = "Pidgey";
+    gender = "Undefined gender";
+    health = 40;
+}
+
+// Constructor Overload definition
+Pokemon::Pokemon(string nome, string sexo, int vida) : name(nome), gender(sexo), health(vida){
+    Report();
+}
+
+// Constructor Definition
+WaterType::WaterType(){
+    cout << "It's a water type Pokemon!" << endl;
+}
+
+// Constructor Overload Definition
+WaterType::WaterType(string nome, string sexo, int vida) : Pokemon(nome, sexo, vida){
+    
+}
+
+void Pokemon::Report(){
+    cout << "A " << gender << " " << name << " Appeared | " << health << " Hp." << endl;
+}
+
+void WaterType::Speak(){
+    cout << "Squirtle, Squirtle!" << endl;
+}*/
+
+/*Access Modifiers
+    class Creature{
     public:
-        Animal();
-        Animal(string nome, int idade, int pernas);
+        Creature();
 
-        string Name;
-        int age;
-        int numberOfLimbs;
+        void SetName(string nome);
+        
+        string GetName();
+        float GetHealth();
 
-        void Report();
+        void TakeDamage(float damage);
+
+    private:
+        string name;
+        float health;
+
+    protected:
+        string loot;
+
     };
 
-    class Dog : public Animal{
+    class Dwarf : public Creature{
     public:
-        Dog();
-        Dog(string nome, int idade, int pernas);
+        Dwarf();
 
-        void Speak();
+        string GetLoot();
+
     };
     
     int main(){
-        // Animal a1;
-        // a1.Report();
+        // Creature c1;
+        // c1.SetName("Spider");
+        // cout << "It's a " << c1.GetName() << ". It has " << c1.GetHealth() << " hp" << endl;
+        // cout << "You attack the " << c1.GetName() << " and caused 30 damage." << endl;
+        // c1.TakeDamage(30.f);
 
-        // Animal a2("Lessie", 2, 4);
-        // // a2.Report(); // Movido para o constructor
-
-        Dog d1("Luna", 9, 4);
-        d1.Speak();
+        Dwarf d1;
+        cout << "It's the Dwarf " << d1.GetName() << "! He has an " << d1.GetLoot() << " to sell." << endl;
 
         system("pause");
     }
 
-    Animal::Animal(){
-        cout << "An animal is born!" << endl;
-
-        Name = "DEFAULT";
-        age = 0;
-        numberOfLimbs = 0;
+    Creature::Creature(){
+        health = 100.f; // Default value
+        cout << "A creature has spawned!" << endl;
     }
 
-    // Animal::Animal(string nome, int idade, int pernas){ // Forma antiga
-    //     Name = nome;
-    //     age = idade;
-    //     numberOfLimbs = pernas;
-    // }
-
-    Animal::Animal(string nome, int idade, int pernas) : Name(nome), age(idade), numberOfLimbs(pernas){
-        Report();
+    Dwarf::Dwarf(){
+        SetName("Goodbarrel");
+        loot = "Hand Axe";
     }
 
-    void Animal::Report(){
-        cout << "Name: " << Name << " | " << "Age: " << age << " | " << "Num of Limbs: " << numberOfLimbs << endl;
+    void Creature::SetName(string nome){
+        name = nome;
     }
 
-    Dog::Dog(){
-        cout << "A Dog is born!" << endl;
+    string Creature::GetName(){
+        return name;
     }
 
-    Dog::Dog(string nome, int idade, int pernas){
-        Animal(nome, idade, pernas);
+    float Creature::GetHealth(){
+        return health;
     }
 
-    void Dog::Speak(){
-        cout << "Woof!" << endl;
-    }
-*/    
+    void Creature::TakeDamage(float damage){
+        float currentHealth;
+        currentHealth = health - damage;
 
+        if (currentHealth <= 0.f){
+            cout << "The " << GetName() << " has died!" << endl;
+        } else {
+            health -= damage;
+            cout << "The " << GetName() << " now has " << GetHealth() << " hp left." << endl;
+        }
+    }
+
+    string Dwarf::GetLoot(){
+        return loot;
+    }
+*/
+
+/*Stack and Heap
+    struct Spam{
+        Spam();
+
+        void ShowId();
+        
+        int id;
+        string message;
+    };
+    
+    int main(){
+        for (int i = 0; i < 100000; i++)
+        {
+            Spam* spmPtr = new Spam(); // Create object dynamically at memory (heap)
+            
+            spmPtr->ShowId();
+            cout << spmPtr->message << endl;
+
+            delete spmPtr; // Clear memory to use again
+        }
+
+        system("pause");
+    }
+
+    Spam::Spam(){
+        message = "Default message!";
+        id = 809;
+    }
+
+    void Spam::ShowId(){
+        cout << "Id: " << id << " ";
+    }
+*/
+
+//Destructors
+    class Weapon{
+    public:
+        Weapon();
+        ~Weapon();
+
+        string* weaponName;
+        float* weaponDamage;
+    };
+
+    int main(){
+        Weapon* wPtr = new Weapon();
+        delete wPtr;
+
+        system("pause");
+    }
+
+    Weapon::Weapon(){
+        cout << "A new weapon was forged!" << endl;
+
+        weaponName = new string("Hand Axe");
+        weaponDamage = new float(10.f);
+    }
+
+    Weapon::~Weapon(){
+        cout << "A weapon was destroyed!" << endl;
+
+        delete weaponName, weaponDamage;
+    }
