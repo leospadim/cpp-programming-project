@@ -781,7 +781,7 @@ void WaterType::Speak(){
     }
 */
 
-//Destructors
+/*Destructors
     class Weapon{
     public:
         Weapon();
@@ -810,3 +810,267 @@ void WaterType::Speak(){
 
         delete weaponName, weaponDamage;
     }
+*/
+
+/*Static
+    //1. Static Variables Inside of a Function
+        void AddToCount(){
+            static int count = 0; // Cannot reinicialize a static variable
+            count ++; // Thats why calling several times this funcions works
+
+            cout << count << endl;
+        }
+
+        int main(){
+            for (int i = 0; i < 10; i++){
+                AddToCount();
+            }
+
+            system("pause");
+        }
+
+    //2. Static Object of a Class
+        class Item{
+        public:
+            Item(){
+                cout << "An item has been created!" << endl;
+            }
+            ~Item(){
+                cout << "An item has been destroyed" << endl;
+            }
+        };
+
+        int main(){
+            Item item1; // Does not call the Destructor
+            
+            // Limit the scope
+            {
+                Item item2; // Does call the Destructor
+                // Destructor is called here, at the end of this scope
+            }
+
+            // Limit the scope, but static object lives past it
+            {
+                static Item item3 // Does not call the Destructor
+            }
+            
+            system("pause");
+            // Destructor would be called here, when the main scope ends
+        }
+
+    //3. Static Variables Inside of a Class
+        class Critter{
+        public:
+            static int CritterCount; // Static variables cannot be initialized inside of a class
+            
+            Critter(){
+                cout << "A critter is born!" << endl;
+                CritterCount ++;
+            }
+        };
+
+        int Critter::CritterCount = 0;
+        
+        int main(){
+            Critter::CritterCount = 13; // Since its a static variable, it doesnt even need a instance to access this variable
+            // But it can have one
+            Critter c1;
+            cout << Critter::CritterCount << endl;
+            Critter c2;
+            cout << Critter::CritterCount << endl;
+
+            system("pause");
+        }
+
+    //4. Static Funcion inside of a Class
+        class Critter{
+        public:
+            static int CritterCount;
+            Critter(){
+                cout << "A critter is born!" << endl;
+                CritterCount++;
+            }
+
+            static void AnnouceCount(){
+                cout << CritterCount << endl;
+            }
+        };
+
+        int Critter::CritterCount = 0;
+
+        int main(){
+            // Because the AnnouceCount is static, it doesnt need to create a Crit in order to access that funcion.
+            // Critter c1; 
+            Critter::AnnouceCount();
+            // Critter c2;
+            Critter::AnnouceCount();
+            // It prints 0 because Critter() was never accessed since no crit was created
+            
+            Critter* c3 = new Critter; // Dynamically creating a new crit
+            Critter::AnnouceCount();
+            delete c3;
+
+            system("pause");
+        }
+*/
+
+/*Virtual Function (Overrriding)
+    class Object{
+    public:
+        virtual void BeginPlay();
+    };
+
+    class Actor : public Object{
+    public:
+        virtual void BeginPlay() override;
+    };
+
+    class Pawn : public Actor{
+    public:
+        virtual void BeginPlay() override;
+    };
+
+    int main(){
+        // Object* obj = new Object;
+        // obj->BeginPlay();
+
+        Actor* act = new Actor;
+        act->BeginPlay();
+
+        Pawn* pwn = new Pawn;
+        pwn->BeginPlay();
+
+        // delete obj;
+        delete act;
+        delete pwn;
+        system("pause");
+    }
+
+    void Object::BeginPlay(){
+        cout << "Object BeginPlay called!" << endl;
+    }
+
+    void Actor::BeginPlay(){
+        cout << "Actor BeginPlay called!" << endl;
+        Object::BeginPlay();
+    }
+
+    void Pawn::BeginPlay(){
+        cout << "Pawn BeginPlay called!" << endl;
+    }
+*/
+
+/*Polymorphism
+    class Object{
+    public:
+        virtual void BeginPlay();
+    };
+
+    class Actor : public Object{
+    public:
+        virtual void BeginPlay() override;
+    };
+
+    class Pawn : public Actor{
+    public:
+        virtual void BeginPlay() override;
+    };
+
+    int main(){
+        Object* ptr_to_object = new Object;
+        Actor* ptr_to_actor = new Actor;
+        Pawn* ptr_to_pawn = new Pawn;
+
+        Object* ObjectArray[] = {ptr_to_object, ptr_to_actor, ptr_to_pawn};
+
+        for(int i = 0; i < 3; i++){
+            ObjectArray[i]->BeginPlay();
+        }
+
+        delete ptr_to_object;
+        delete ptr_to_actor;
+        delete ptr_to_pawn;
+        system("pause");
+    }
+
+    void Object::BeginPlay(){
+        cout << "Object BeginPlay called!" << endl;
+    }
+
+    void Actor::BeginPlay(){
+        cout << "Actor BeginPlay called!" << endl;
+    }
+
+    void Pawn::BeginPlay(){
+        cout << "Pawn BeginPlay called!" << endl;
+    }
+*/
+
+/*Casting
+    class Object{
+    public:
+        virtual void BeginPlay();
+        void ObjectFunction(){
+            cout << "ObjectFunction called!" << endl;
+        }
+    };
+
+    class Actor : public Object{
+    public:
+        virtual void BeginPlay() override;
+        void ActorFunction(){
+            cout << "ActorFunction called!" << endl;
+        }
+    };
+
+    class Pawn : public Actor{
+    public:
+        virtual void BeginPlay() override;
+        void PawnFunction(){
+            cout << "PawnFunction called!" << endl;
+        }
+    };
+
+    int main(){
+        Object* ptr_to_object = new Object;
+        Actor* ptr_to_actor = new Actor;
+        Pawn* ptr_to_pawn = new Pawn;
+
+        Object* ObjectArray[] = {ptr_to_object, ptr_to_actor, ptr_to_pawn};
+        
+        for(int i = 0; i < 3; i++){
+            //ObjectArray[i]->BeginPlay();
+            
+            Object* obj = ObjectArray[i];
+            
+            Actor* act = dynamic_cast<Actor*>(obj);
+            if (act){
+                act->ActorFunction();
+            }
+
+            Pawn* pwn = dynamic_cast<Pawn*>(obj);
+            if (pwn){
+                pwn->PawnFunction();
+            }
+
+            // There is also a static_cast
+        }
+
+        delete ptr_to_object;
+        delete ptr_to_actor;
+        delete ptr_to_pawn;
+        system("pause");
+    }
+
+    void Object::BeginPlay(){
+        cout << "Object BeginPlay called!" << endl;
+    }
+
+    void Actor::BeginPlay(){
+        cout << "Actor BeginPlay called!" << endl;
+    }
+
+    void Pawn::BeginPlay(){
+        cout << "Pawn BeginPlay called!" << endl;
+    }
+*/
